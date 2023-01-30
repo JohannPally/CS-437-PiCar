@@ -2,7 +2,7 @@ import picar_4wd as fc
 import numpy as np
 import matplotlib.pyplot as plt
 
-class Avoid():
+class Scan():
     
     def __init__(self):
         self.mat_size = 13
@@ -44,7 +44,7 @@ class Avoid():
         plt.show()
 
 if __name__ == "__main__":
-    avoid = Avoid()
+    avoid = Scan()
     avoid.scan_env()
     avoid.print_grid()
     
