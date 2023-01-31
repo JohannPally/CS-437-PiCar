@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 class Scan():
     
     def __init__(self):
-        self.mat_size = 13
-        self.grid = np.zeros((self.mat_size,self.mat_size))
+        self.local_size = 13
+        self.grid = np.zeros((100,100))
         return
     
     def update_grid(self, angle, dist):
@@ -21,7 +21,7 @@ class Scan():
         print(angle, dist, xi, yi)
         
         pos_check = xi > 0 and yi > 0
-        less_check = xi < self.mat_size and yi < self.mat_size
+        less_check = xi < self.local_size and yi < self.local_size
         
         if pos_check and less_check:
             self.grid[yi,xi] = 1
