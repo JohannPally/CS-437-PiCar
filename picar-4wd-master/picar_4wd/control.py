@@ -2,7 +2,7 @@ import picar_4wd as fc
 import numpy as np
 import matplotlib.pyplot as plt
 import time
-from astar import AStarCompute
+from astar import AStar
 
 class Control:
 
@@ -110,8 +110,8 @@ class Control:
 if __name__ == '__main__':
     cnt = Control()
     cnt.update_attributes((95,95),'N')
-    astar = AStarComputer()
-    pt = astar.compute(cnt.location, cnt.grid)
+    astar = AStar()
+    pt = astar.compute(cnt.grid, cnt.location)
     
     """
     cnt.update_attributes((0,0),'N')
