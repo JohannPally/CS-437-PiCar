@@ -144,6 +144,7 @@ class Control:
 # TESTING
 
 if __name__ == '__main__':
+    fc.stop()
     cnt = Control()
     ast = AStar()
     cnt.update_attributes((95,95),'N')
