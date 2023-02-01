@@ -165,6 +165,10 @@ if __name__ == '__main__':
         if not cnt.cycle():
             break
 
+    for _ in range(10):
+        cnt.scan_env()  
+        cnt.print_env()
+
     """
     # ENVIRONMENT SCANNING
     cnt.update_attributes((80,50),'N')
