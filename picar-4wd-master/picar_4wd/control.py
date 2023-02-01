@@ -90,7 +90,7 @@ class Control:
 # SCANNING
     
     def get_global_index(self, x, y):
-        I, J = self.location
+        J, I = self.location
         
         if self.orientation == 'N':
             return (I+x, J-y)
