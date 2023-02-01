@@ -4,20 +4,22 @@ from collections import defaultdict
 from typing import List, Tuple
 
 # TODO: Specify correct number of rows and columns from grid that car scans
-NUM_ROWS = 100
-NUM_COLS = 100
 
 class AStar:
+    def __init__(self, num = 100):
+        self.NUM_ROWS = num
+        self.NUM_COLS = num
+
     def get_neighbours(self, node: Tuple) -> List[Tuple]:
         r, c = node
         neighbours = []
         if r > 0:
             neighbours.append((r - 1, c))
-        if r < NUM_ROWS - 1:
+        if r < self.NUM_ROWS - 1:
             neighbours.append((r + 1, c))
         if c > 0:
             neighbours.append((r, c - 1))
-        if c < NUM_COLS - 1:
+        if c < self.NUM_COLS - 1:
             neighbours.append((r, c + 1))
         return neighbours
 
@@ -33,8 +35,8 @@ class AStar:
         # Calculating the initial heuristic values using Euclidean distances
         x1, y1 = end_node
         y1 *= -1
-        for r in range(NUM_ROWS):
-            for c in range(NUM_COLS):
+        for r in range(self.NUM_ROWS):
+            for c in range(self.NUM_COLS):
                 x2, y2 = r, -c
                 euclid_distance = math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2))
                 heuristic[(r, c)] = euclid_distance

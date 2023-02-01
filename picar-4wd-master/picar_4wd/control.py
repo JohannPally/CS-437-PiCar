@@ -14,7 +14,7 @@ class Control:
         
         self.orientation = 'S'
         self.location = (0,50)
-        self.ast = AStar()
+        self.ast = AStar(self.global_size)
         
         self.next_reference = {
             'N': {(-1,0): ('L','W'), (0,-1): ('F','N'), (1,0): ('R','E')},
@@ -151,7 +151,6 @@ class Control:
 if __name__ == '__main__':
     fc.stop()
     cnt = Control()
-    ast = AStar()
     cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
 
     while(True):
