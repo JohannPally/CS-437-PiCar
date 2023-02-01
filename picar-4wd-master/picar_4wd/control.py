@@ -161,10 +161,19 @@ if __name__ == '__main__':
     cnt = Control()
     cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
 
-    #FINAL MOVEMENT
-    while(True):
-        if not cnt.cycle():
-            break
+    # TESTING MOVEMENT
+    cnt.move('R', 'N')
+    input()
+    cnt.move('L', 'N')
+    input()
+    cnt.move('F', 'N')
+    input()
+    cnt.move('B', 'N')
+
+    # #FINAL MOVEMENT
+    # while(True):
+    #     if not cnt.cycle():
+    #         break
 
     """
     # SCANNING
