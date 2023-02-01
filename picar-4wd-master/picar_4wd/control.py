@@ -161,6 +161,8 @@ if __name__ == '__main__':
     cnt = Control()
     cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
 
+    # SCANNING
+    cnt.update_attributes((cnt.global_size/2,cnt.global_size/2),'N')
     for _ in range(10):
         cnt.scan_env()  
         cnt.print_env()
@@ -174,7 +176,7 @@ if __name__ == '__main__':
     
 
     """
-    # ENVIRONMENT SCANNING
+    # ENVIRONMENT UPDATE
     cnt.update_attributes((80,50),'N')
     cnt.scan_env()
     path = ast.compute(cnt.grid, cnt.location)
