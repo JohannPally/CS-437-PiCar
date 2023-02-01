@@ -163,12 +163,16 @@ if __name__ == '__main__':
 
     # TESTING MOVEMENT
     cnt.move('R', 'N')
+    fc.stop()
     input()
     cnt.move('L', 'N')
+    fc.stop()
     input()
     cnt.move('F', 'N')
+    fc.stop()
     input()
     cnt.move('B', 'N')
+    fc.stop()
 
     # #FINAL MOVEMENT
     # while(True):
