@@ -164,7 +164,7 @@ if __name__ == '__main__':
     cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
 
     # SCANNING
-    cnt.update_attributes((15,15),'N')
+    cnt.update_attributes((20,10),'N')
     for _ in range(10):
         cnt.grid = np.zeros((cnt.global_size, cnt.global_size))
         cnt.scan_env()  
