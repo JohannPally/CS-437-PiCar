@@ -119,8 +119,6 @@ class Control:
         x = (dist*np.cos((angle+90)*np.pi/180))//self.dis_factor
         y = (dist*np.sin((angle+90)*np.pi/180))//self.dis_factor
 
-        print(angle, dist, x, y)
-        
         xi = int(x)
         yi = int(y)
         
@@ -163,20 +161,19 @@ if __name__ == '__main__':
     cnt = Control()
     cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
 
+    #FINAL MOVEMENT
+    while(True):
+        if not cnt.cycle():
+            break
+
+    """
     # SCANNING
     cnt.update_attributes((20,10),'N')
     for _ in range(10):
         cnt.grid = np.zeros((cnt.global_size, cnt.global_size))
         cnt.scan_env()  
         cnt.print_env()
-
     """
-    #FINAL MOVEMENT
-    while(True):
-        if not cnt.cycle():
-            break
-    """
-    
 
     """
     # ENVIRONMENT UPDATE
