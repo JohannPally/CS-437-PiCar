@@ -28,6 +28,17 @@ class Control:
         if orientation is not None:
             self.orientation = orientation
     
+    def cycle(self):
+        self.scan_env()
+        path = ast.compute(self.grid, self.location)
+        if len(path) == 0:
+            return False
+        self.print_env(path)
+        for i in range(10):
+            self.step()
+        return True
+        
+    
 #MOVEMENT
     
     # MAIN PATH TREADING FUNCTION
@@ -132,7 +143,14 @@ if __name__ == '__main__':
     cnt = Control()
     ast = AStar()
     cnt.update_attributes((95,95),'N')
+    
+    path = ast.compute(cnt.grid, cnt.location)
 
+    while(True):
+        if not cnt.cycle():
+            break
+
+    """
     # ENVIRONMENT SCANNING
     cnt.update_attributes((80,50),'N')
     cnt.scan_env()
@@ -153,6 +171,7 @@ if __name__ == '__main__':
     cnt.scan_env()
     path = ast.compute(cnt.grid, cnt.location)
     cnt.print_env(path)
+    """
 
     """ 
     # ASTAR
