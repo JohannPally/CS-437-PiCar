@@ -130,24 +130,29 @@ class Control:
 
 if __name__ == '__main__':
     cnt = Control()
+    ast = AStar()
     cnt.update_attributes((95,95),'N')
 
     # ENVIRONMENT SCANNING
     cnt.update_attributes((80,50),'N')
     cnt.scan_env()
-    cnt.print_env()
+    path = ast.compute(cnt.grid, cnt.location)
+    cnt.print_env(path)
 
     cnt.update_attributes((60,50),'E')
     cnt.scan_env()
-    cnt.print_env()
+    path = ast.compute(cnt.grid, cnt.location)
+    cnt.print_env(path)
 
     cnt.update_attributes((40,50),'S')
     cnt.scan_env()
-    cnt.print_env()
+    path = ast.compute(cnt.grid, cnt.location)
+    cnt.print_env(path)
 
     cnt.update_attributes((20,50),'W')
     cnt.scan_env()
-    cnt.print_env()
+    path = ast.compute(cnt.grid, cnt.location)
+    cnt.print_env(path)
 
     """ 
     # ASTAR
