@@ -7,9 +7,10 @@ from astar import AStar
 class Control:
 
     def __init__(self):
+        self.global_size = 50
         self.local_size = 10
         self.dis_factor = 10
-        self.grid = np.zeros((100,100))
+        self.grid = np.zeros((self.global_size, self.global_size))
         
         self.orientation = 'S'
         self.location = (0,50)
