@@ -61,15 +61,18 @@ class Control:
             fc.turn_left(50)
             time.sleep(1)
             fc.forward(50)
+            time.sleep(1)
 
         elif movement == 'F':
             fc.forward(50)
+            time.sleep(1)
         
         elif movement == 'R':
             fc.stop()
             fc.turn_right(50)
             time.sleep(1)
             fc.forward(50)
+            time.sleep(1)
         
         self.orientation = next_orientation
         return
@@ -129,6 +132,7 @@ class Control:
         
     # MAIN SANNING FUNCTION
     def scan_env(self):
+        fc.stop()
         fc.get_distance_at(-90)
         for i in range(-90,90,10):
             z = fc.get_distance_at(i)
