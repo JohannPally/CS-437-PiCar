@@ -161,13 +161,17 @@ if __name__ == '__main__':
     cnt = Control()
     cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
 
-    while(True):
-        if not cnt.cycle():
-            break
-
     for _ in range(10):
         cnt.scan_env()  
         cnt.print_env()
+
+    """
+    #FINAL MOVEMENT
+    while(True):
+        if not cnt.cycle():
+            break
+    """
+    
 
     """
     # ENVIRONMENT SCANNING
