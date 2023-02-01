@@ -143,12 +143,12 @@ class Control:
     def scan_env(self):
         fc.stop()
         fc.get_distance_at(-90)
-        for i in range(-90,90,1):
+        for i in range(-90,90,3):
             z = fc.get_distance_at(i)
             if z > 0:
                 self.update_grid(i,z)
 
-        for i in range(90,-91,-1):
+        for i in range(90,-91,-3):
             z = fc.get_distance_at(i)
             if z > 0:
                 self.update_grid(i,z)
