@@ -7,7 +7,8 @@ from astar import AStar
 class Control:
 
     def __init__(self):
-        self.local_size = 13
+        self.local_size = 10
+        self.dis_factor = 10
         self.grid = np.zeros((100,100))
         
         self.orientation = 'S'
@@ -29,6 +30,7 @@ class Control:
     
 #MOVEMENT
     
+    # MAIN PATH TREADING FUNCTION
     def step(self, path):
         next_loc = path.pop(0)
         diff = (next_loc[0]-self.location[0], next_loc[1]-self.location[1])
@@ -58,18 +60,7 @@ class Control:
         return
         
     
-#SCANNING
-    
-    def update_grid(self, angle, dist):
-        x = dist*np.cos((angle+90)*np.pi/180)
-        y = dist*np.sin((angle+90)*np.pi/180)
-        
-        mid = int(self.mat_size/2)
-        dis_factor = 3
-        xi = mid+int(x//dis_factor)
-        yi = int(y//dis_factor)
-        
-        self.update_global(xi,yi)
+# SCANNING
     
     def get_global_index(self, x, y):
         I, J = self.location
@@ -88,10 +79,39 @@ class Control:
     
     def update_global(self, x, y):
         gi, gj = self.get_global_index(x,y)
-        self.grid[gi][gj] = 1
+        itest = gi >= 0 and gi < 100
+        jtest = gj >= 0 and gj < 100
+
+        if itest and jtest:
+            self.grid[gi][gj] = 1
+
         return
+
+    def update_grid(self, angle, dist):
+        x = dist*np.cos((angle+90)*np.pi/180)
+        y = dist*np.sin((angle+90)*np.pi/180)
         
-    
+        mid = int(self.local_size/2)
+        
+        xi = mid+int(x//self.dis_factor)
+        yi = int(y//self.dis_factor)
+        
+        self.update_global(xi,yi)
+
+    def print_env(self, path = []):
+        tmp_grid = np.copy(self.grid)
+
+        for step in path:
+            si, sj = step
+            tmp_grid[si][sj] = 3
+
+        ri, rj = self.location
+        tmp_grid[ri][rj] = 4
+        tmp_grid[0][0] = 5
+
+        plt.matshow(tmp_grid)
+        
+    # MAIN SANNING FUNCTION
     def scan_env(self):
         fc.get_distance_at(-90)
         for i in range(-90,90,10):
@@ -105,15 +125,31 @@ class Control:
         fc.get_distance_at(0)
         return
     
-#TESTING
+# TESTING
 
 if __name__ == '__main__':
     cnt = Control()
     cnt.update_attributes((95,95),'N')
+
+    # ENVIRONMENT SCANNING
+    cnt.scan_env()
+    cnt.update_attributes((30,30),'E')
+    cnt.print_env()
+    cnt.scan_env()
+    cnt.update_attributes((10,10),'W')
+    cnt.print_env()
+    cnt.scan_env()
+    cnt.update_attributes((60,60),'S')
+    cnt.print_env()
+
+    """ 
+    # ASTAR
     astar = AStar()
     pt = astar.compute(cnt.grid, cnt.location)
+    """
     
     """
+    # PATH FINDING
     cnt.update_attributes((0,0),'N')
     pt = [(1,0), (2,0), (2,1), (3,1)]
     while len(pt) > 0:
