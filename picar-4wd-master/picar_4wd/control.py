@@ -63,6 +63,8 @@ class Control:
             time.sleep(.1)
             fc.turn_left(45)
             time.sleep(1)
+            fc.stop()
+            time.sleep(.1)
             fc.forward(50)
             time.sleep(.7)
 
@@ -81,6 +83,8 @@ class Control:
             time.sleep(.1)
             fc.turn_right(60)
             time.sleep(.9)
+            fc.stop()
+            time.sleep(.1)
             fc.forward(50)
             time.sleep(.7)
         
