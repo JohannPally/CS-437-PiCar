@@ -147,11 +147,13 @@ class Control:
         fc.get_distance_at(-90)
         for i in range(-90,90,1):
             z = fc.get_distance_at(i)
-            self.update_grid(i,z)
+            if z > 0:
+                self.update_grid(i,z)
 
         for i in range(90,-91,-1):
             z = fc.get_distance_at(i)
-            self.update_grid(i,z)
+            if z > 0:
+                self.update_grid(i,z)
         
         fc.get_distance_at(0)
         return
