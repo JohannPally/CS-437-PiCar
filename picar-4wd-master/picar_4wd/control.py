@@ -31,12 +31,15 @@ class Control:
     
     def cycle(self):
         self.scan_env()
+        print('done scanning')
         path = self.ast.compute(self.grid, self.location)
         if len(path) == 0:
             return False
         self.print_env(path)
+        print('printing env')
         for i in range(10):
             self.step()
+            print('one step done')
         return True
         
     
