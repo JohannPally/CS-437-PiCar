@@ -59,6 +59,7 @@ class Control:
     def move(self, movement, next_orientation):
         if movement == 'L':
             fc.stop()
+            time.sleep(.1)
             fc.turn_left(50)
             time.sleep(.8)
             fc.forward(50)
@@ -70,6 +71,7 @@ class Control:
         
         elif movement == 'R':
             fc.stop()
+            time.sleep(.1)
             fc.turn_right(50)
             time.sleep(.8)
             fc.forward(50)
@@ -135,7 +137,7 @@ class Control:
     def scan_env(self):
         fc.stop()
         fc.get_distance_at(-90)
-        for i in range(-90,90,10):
+        for i in range(-90,90,5):
             z = fc.get_distance_at(i)
             self.update_grid(i,z)
 
