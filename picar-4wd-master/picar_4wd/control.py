@@ -130,21 +130,22 @@ class Control:
 
 if __name__ == '__main__':
     cnt = Control()
-    cnt.update_attributes((50,80),'N')
+    cnt.update_attributes((95,95),'N')
 
     # ENVIRONMENT SCANNING
+    cnt.update_attributes((80,50),'N')
     cnt.scan_env()
     cnt.print_env()
 
-    cnt.update_attributes((50,60),'E')
+    cnt.update_attributes((60,50),'E')
     cnt.scan_env()
     cnt.print_env()
 
-    cnt.update_attributes((50,40),'W')
+    cnt.update_attributes((40,50),'S')
     cnt.scan_env()
     cnt.print_env()
 
-    cnt.update_attributes((50,20),'S')
+    cnt.update_attributes((20,50),'W')
     cnt.scan_env()
     cnt.print_env()
 
