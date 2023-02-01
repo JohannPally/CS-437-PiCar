@@ -38,7 +38,7 @@ class Control:
         self.print_env(path)
         print('printing env')
         for i in range(10):
-            self.step()
+            path = self.step(path)
             print('one step done')
         return True
         
