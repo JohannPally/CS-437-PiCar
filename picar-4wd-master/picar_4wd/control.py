@@ -134,13 +134,18 @@ if __name__ == '__main__':
 
     # ENVIRONMENT SCANNING
     cnt.scan_env()
+    cnt.print_env()
+
     cnt.update_attributes((30,30),'E')
-    cnt.print_env()
     cnt.scan_env()
+    cnt.print_env()
+
     cnt.update_attributes((10,10),'W')
-    cnt.print_env()
     cnt.scan_env()
+    cnt.print_env()
+
     cnt.update_attributes((60,60),'S')
+    cnt.scan_env()
     cnt.print_env()
 
     """ 
