@@ -147,8 +147,6 @@ if __name__ == '__main__':
     cnt = Control()
     ast = AStar()
     cnt.update_attributes((95,95),'N')
-    
-    path = ast.compute(cnt.grid, cnt.location)
 
     while(True):
         if not cnt.cycle():
