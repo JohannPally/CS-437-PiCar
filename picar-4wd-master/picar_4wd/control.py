@@ -115,8 +115,8 @@ class Control:
         return
 
     def update_grid(self, angle, dist):
-        x = dist*np.cos((angle+90)*np.pi/180)
-        y = dist*np.sin((angle+90)*np.pi/180)
+        x = dist*np.cos((-1*angle+90)*np.pi/180)
+        y = dist*np.sin((-1*angle+90)*np.pi/180)
         
         mid = int(self.local_size/2)
         
