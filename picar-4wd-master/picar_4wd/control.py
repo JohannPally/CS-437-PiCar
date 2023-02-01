@@ -7,6 +7,7 @@ from astar import AStar
 class Control:
 
     def __init__(self):
+        fc.stop()
         self.global_size = 30
         self.local_size = 10
         self.dis_factor = 5
@@ -90,19 +91,19 @@ class Control:
 # SCANNING
     
     def get_global_index(self, x, y):
-        J, I = self.location
+        I, J = self.location
         
         if self.orientation == 'N':
-            return (I+x, J-y)
+            return (I-y, J+x)
         
         elif self.orientation == 'E':
-            return (I+y, J+x)
+            return (I+x, J+y)
             
         elif self.orientation == 'S':
-            return (I-x, J+y)
+            return (I+y, J-x)
             
         elif self.orientation == 'W':
-            return (I-y, J-x)
+            return (I-x, J-y)
     
     def update_global(self, x, y):
         gi, gj = self.get_global_index(x,y)
@@ -159,7 +160,6 @@ class Control:
 # TESTING
 
 if __name__ == '__main__':
-    fc.stop()
     cnt = Control()
     cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
 
