@@ -152,7 +152,7 @@ if __name__ == '__main__':
     fc.stop()
     cnt = Control()
     ast = AStar()
-    cnt.update_attributes((95,95),'N')
+    cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
 
     while(True):
         if not cnt.cycle():
