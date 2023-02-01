@@ -79,8 +79,8 @@ class Control:
         elif movement == 'R':
             fc.stop()
             time.sleep(.1)
-            fc.turn_right(55)
-            time.sleep(1)
+            fc.turn_right(60)
+            time.sleep(.9)
             fc.forward(50)
             time.sleep(.7)
         
