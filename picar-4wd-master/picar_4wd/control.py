@@ -71,7 +71,7 @@ class Control:
         elif self.orientation == 'E':
             return (I+y, J+x)
             
-        elif self.orientaiton == 'S':
+        elif self.orientation == 'S':
             return (I-x, J+y)
             
         elif self.orientation == 'W':
@@ -110,6 +110,7 @@ class Control:
         tmp_grid[0][0] = 5
 
         plt.matshow(tmp_grid)
+        plt.show()
         
     # MAIN SANNING FUNCTION
     def scan_env(self):
