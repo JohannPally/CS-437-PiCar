@@ -8,7 +8,7 @@ class Control:
 
     def __init__(self):
         fc.stop()
-        self.global_size = 30
+        self.global_size = 15
         self.local_size = 10
         self.dis_factor = 5
         self.grid = np.zeros((self.global_size, self.global_size))
@@ -62,7 +62,7 @@ class Control:
             fc.stop()
             time.sleep(.1)
             fc.turn_left(40)
-            time.sleep(1)
+            time.sleep(.7)
             fc.stop()
             time.sleep(.1)
             fc.forward(50)
