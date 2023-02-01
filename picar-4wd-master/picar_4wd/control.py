@@ -13,6 +13,7 @@ class Control:
         
         self.orientation = 'S'
         self.location = (0,50)
+        self.ast = AStar()
         
         self.next_reference = {
             'N': {(-1,0): ('L','W'), (0,-1): ('F','N'), (1,0): ('R','E')},
@@ -30,7 +31,7 @@ class Control:
     
     def cycle(self):
         self.scan_env()
-        path = ast.compute(self.grid, self.location)
+        path = self.ast.compute(self.grid, self.location)
         if len(path) == 0:
             return False
         self.print_env(path)
