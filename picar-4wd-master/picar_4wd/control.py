@@ -62,7 +62,7 @@ class Control:
             fc.stop()
             time.sleep(.1)
             fc.turn_left(40)
-            time.sleep(.7)
+            time.sleep(.8)
             fc.stop()
             time.sleep(.1)
             fc.forward(50)
@@ -70,13 +70,13 @@ class Control:
 
         elif movement == 'F':
             fc.forward(50)
-            time.sleep(.7)
+            time.sleep(.5)
 
         elif movement == 'B':
             fc.stop()
             time.sleep(.1)
             fc.backward(50)
-            time.sleep(.7)
+            time.sleep(.5)
         
         elif movement == 'R':
             fc.stop()
