@@ -4,8 +4,8 @@ from collections import defaultdict
 from typing import List, Tuple
 
 # TODO: Specify correct number of rows and columns from grid that car scans
-NUM_ROWS = 10
-NUM_COLS = 10
+NUM_ROWS = 100
+NUM_COLS = 100
 
 class AStar:
     def get_neighbours(self, node: Tuple) -> List[Tuple]:
