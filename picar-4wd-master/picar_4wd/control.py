@@ -61,18 +61,18 @@ class Control:
             fc.turn_left(50)
             time.sleep(1)
             fc.forward(50)
-            time.sleep(1)
+            time.sleep(.5)
 
         elif movement == 'F':
             fc.forward(50)
-            time.sleep(1)
+            time.sleep(.5)
         
         elif movement == 'R':
             fc.stop()
             fc.turn_right(50)
             time.sleep(1)
             fc.forward(50)
-            time.sleep(1)
+            time.sleep(.5)
         
         self.orientation = next_orientation
         return
