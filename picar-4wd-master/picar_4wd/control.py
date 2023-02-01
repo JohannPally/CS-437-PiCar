@@ -9,7 +9,7 @@ class Control:
     def __init__(self):
         self.global_size = 30
         self.local_size = 10
-        self.dis_factor = 10
+        self.dis_factor = 5
         self.grid = np.zeros((self.global_size, self.global_size))
         
         self.orientation = 'S'
