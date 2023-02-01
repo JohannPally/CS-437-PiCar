@@ -98,8 +98,8 @@ class Control:
     
     def update_global(self, x, y):
         gi, gj = self.get_global_index(x,y)
-        itest = gi >= 0 and gi < 100
-        jtest = gj >= 0 and gj < 100
+        itest = gi >= 0 and gi < self.global_size
+        jtest = gj >= 0 and gj < self.global_size
 
         if itest and jtest:
             self.grid[gi][gj] = 1
