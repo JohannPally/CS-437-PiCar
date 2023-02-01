@@ -120,9 +120,7 @@ class Control:
 
         print(angle, dist, x, y)
         
-        mid = int(self.local_size/2)
-        
-        xi = mid+int(x)
+        xi = int(x)
         yi = int(y)
         
         self.update_global(xi,yi)
