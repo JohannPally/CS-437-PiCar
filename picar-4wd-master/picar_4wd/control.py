@@ -62,7 +62,7 @@ class Control:
             fc.stop()
             time.sleep(.1)
             fc.turn_left(40)
-            time.sleep(.8)
+            time.sleep(1)
             fc.stop()
             time.sleep(.1)
             fc.forward(20)
