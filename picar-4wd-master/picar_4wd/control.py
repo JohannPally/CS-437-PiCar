@@ -65,17 +65,17 @@ class Control:
             time.sleep(.8)
             fc.stop()
             time.sleep(.1)
-            fc.forward(50)
+            fc.forward(20)
             time.sleep(.7)
 
         elif movement == 'F':
-            fc.forward(50)
+            fc.forward(20)
             time.sleep(.5)
 
         elif movement == 'B':
             fc.stop()
             time.sleep(.1)
-            fc.backward(50)
+            fc.backward(20)
             time.sleep(.5)
         
         elif movement == 'R':
@@ -85,7 +85,7 @@ class Control:
             time.sleep(1)
             fc.stop()
             time.sleep(.1)
-            fc.forward(50)
+            fc.forward(20)
             time.sleep(.7)
         
         self.orientation = next_orientation
