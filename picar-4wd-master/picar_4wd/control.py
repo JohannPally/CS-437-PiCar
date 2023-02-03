@@ -3,25 +3,29 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 from astar import AStar
+from vision import Vision
 
 class Control:
 
     def __init__(self):
         fc.stop()
-        self.global_size = 15
-        self.local_size = 10
-        self.dis_factor = 5
+        self.global_size = 7
+        self.local_size = 4
+        self.dis_factor = 15
+        self.cycle_length = 5
         self.grid = np.zeros((self.global_size, self.global_size))
         
         self.orientation = 'S'
         self.location = (0,50)
         self.ast = AStar(self.global_size)
+        self.vision = Vision()
+        self.vision_memory = True
         
         self.next_reference = {
-            'N': {(-1,0): ('L','W'), (0,-1): ('F','N'), (1,0): ('R','E'), (0,1): ('B','N')},
-            'E': {(0,-1): ('L','N'), (1,0): ('F','E'), (0,1): ('R','S'), (-1,0): ('B','E')},
-            'S': {(1,0): ('L','E'), (0,1): ('F','S'), (-1,0): ('R','W'), (0,-1): ('B','S')},
-            'W': {(0,1): ('L', 'S'), (-1,0): ('F','W'), (0,-1): ('R','N'), (1,0): ('B','W')}
+            'N': {(0,-1): ('L','W'), (-1,0): ('F','N'), (0,1): ('R','E'), (1,0): ('B','N')},
+            'E': {(-1,0): ('L','N'), (0,1): ('F','E'), (1,0): ('R','S'), (0,-1): ('B','E')},
+            'S': {(0,1): ('L','E'), (1,0): ('F','S'), (0,-1): ('R','W'), (-1,0): ('B','S')},
+            'W': {(1,0): ('L', 'S'), (0,-1): ('F','W'), (-1,0): ('R','N'), (0,1): ('B','W')}
         }
         return
     
@@ -35,13 +39,19 @@ class Control:
         self.scan_env()
         print('done scanning')
         path = self.ast.compute(self.grid, self.location)
+        self.print_env(path)
         if len(path) == 0:
             return False
-        self.print_env(path)
-        print('printing env')
-        for i in range(10):
+        #print('printing env')
+        for i in range(self.cycle_length):
             path = self.step(path)
             print('one step done')
+            #if fc.get_distance_at(0) < 3:
+                #return True
+            if self.vision_memory and self.vision.check_stop_sign():
+                fc.stop()
+                time.sleep(5)
+                self.vision_memory = False
         return True
         
     
@@ -61,33 +71,31 @@ class Control:
         if movement == 'L':
             fc.stop()
             time.sleep(.1)
-            fc.turn_left(40)
+            fc.turn_left(50)
             time.sleep(1)
             fc.stop()
             time.sleep(.1)
             fc.forward(20)
-            time.sleep(.7)
 
         elif movement == 'F':
             fc.forward(20)
-            time.sleep(.5)
 
         elif movement == 'B':
             fc.stop()
             time.sleep(.1)
             fc.backward(20)
-            time.sleep(.5)
         
         elif movement == 'R':
             fc.stop()
             time.sleep(.1)
             fc.turn_right(60)
-            time.sleep(1)
+            time.sleep(.9)
             fc.stop()
             time.sleep(.1)
             fc.forward(20)
-            time.sleep(.7)
         
+        time.sleep(.7)
+        fc.stop()
         self.orientation = next_orientation
         return
         
@@ -158,18 +166,27 @@ class Control:
         
         fc.get_distance_at(0)
         return
+        
     
 # TESTING
 
 if __name__ == '__main__':
     cnt = Control()
-    cnt.update_attributes((cnt.global_size-2,cnt.global_size-2),'N')
-
+    cnt.update_attributes((cnt.global_size-1,cnt.global_size-2),'N')
+        
     #FINAL MOVEMENT
     while(True):
         if not cnt.cycle():
             break
-
+    
+    """
+    #TESTING VISION
+    for i in range(10):
+        cnt.vision.check_stop_sign()
+        print("took photo, waiting on input")
+        input()
+    """
+    
     """
     # TESTING MOVEMENT
     cnt.move('R', 'N')
