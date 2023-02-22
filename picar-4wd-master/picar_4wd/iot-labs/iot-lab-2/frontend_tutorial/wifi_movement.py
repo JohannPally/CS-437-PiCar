@@ -14,12 +14,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             client, clientInfo = s.accept()
             print("server recv from: ", clientInfo)
             data = client.recv(1024)      # receive 1024 Bytes of message in binary format
-            
             if data != b"":
                 print(data)  
                 orientation, traveled = cntl.move(data)
-                client.sendall(str(orientation) + "," + str(traveled)) # Echo back to client
-    except:
+                message= f"{orientation},{traveled}".encode('ascii')
+                client.sendall(message) # Echo back to client
+    except Exception as e:
+        print('error: ', e)
         print("Closing socket")
         client.close()
         s.close()
