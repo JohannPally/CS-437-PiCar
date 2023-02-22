@@ -19,6 +19,7 @@ function client(input){
     // get the data from the server
     client.on('data', (data) => {
         document.getElementById("bluetooth").innerHTML = data;
+        console
         console.log(data.toString());
         client.end();
         client.destroy();
@@ -73,11 +74,12 @@ function resetKey(e) {
     document.getElementById("rightArrow").style.color = "grey";
 }
 
+window.onload = () => {
+    // document.getElementById("direction")
+}
 
 // update data for every 50ms
-function update_data(){
-    setInterval(function(){
-        // get image from python server
-        client();
-    }, 50);
+function update_data(event){
+    console.log(event)
+    client(event.target.value);
 }

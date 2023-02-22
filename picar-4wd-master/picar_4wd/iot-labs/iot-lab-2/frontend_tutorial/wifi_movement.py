@@ -17,9 +17,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             
             if data != b"":
                 print(data)  
-                orientation, fuel = cntl.move(data)
-                client.sendall(data) # Echo back to client
-    except: 
+                orientation, traveled = cntl.move(data)
+                client.sendall(orientation + "," + traveled) # Echo back to client
+    except:
         print("Closing socket")
         client.close()
         s.close()

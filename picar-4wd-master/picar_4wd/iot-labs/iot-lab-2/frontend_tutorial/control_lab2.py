@@ -17,7 +17,7 @@ class Control2:
             'W': {'L':'S', 'F':'W', 'R':'N', 'B':'W'}
         }
        
-        self.fuel = 10
+        self.traveled = 0
         return
         
     def move(self, code):
@@ -54,7 +54,7 @@ class Control2:
                 time.sleep(.7)
                 fc.stop()
 
-                self.fuel -= 1
+                self.traveled += 15.24
                 self.orientation = self.next_reference[self.orientation][movement]
             
             else:
