@@ -21,46 +21,43 @@ class Control2:
         return
         
     def move(self, code):
-        if self.fuel > 0:
-            movement = self.mcodes.get(code)
+        movement = self.mcodes.get(code)
 
-            if movement is not None:
-                if movement == 'L':
-                    fc.stop()
-                    time.sleep(.1)
-                    fc.turn_left(50)
-                    time.sleep(1)
-                    fc.stop()
-                    time.sleep(.1)
-                    fc.forward(20)
-
-                elif movement == 'F':
-                    fc.forward(20)
-
-                elif movement == 'B':
-                    fc.stop()
-                    time.sleep(.1)
-                    fc.backward(20)
-
-                elif movement == 'R':
-                    fc.stop()
-                    time.sleep(.1)
-                    fc.turn_right(60)
-                    time.sleep(.9)
-                    fc.stop()
-                    time.sleep(.1)
-                    fc.forward(20)
-                
-                time.sleep(.7)
+        if movement is not None:
+            if movement == 'L':
                 fc.stop()
+                time.sleep(.1)
+                fc.turn_left(50)
+                time.sleep(1)
+                fc.stop()
+                time.sleep(.1)
+                fc.forward(20)
 
-                self.traveled += 15.24
-                self.orientation = self.next_reference[self.orientation][movement]
+            elif movement == 'F':
+                fc.forward(20)
+
+            elif movement == 'B':
+                fc.stop()
+                time.sleep(.1)
+                fc.backward(20)
+
+            elif movement == 'R':
+                fc.stop()
+                time.sleep(.1)
+                fc.turn_right(60)
+                time.sleep(.9)
+                fc.stop()
+                time.sleep(.1)
+                fc.forward(20)
             
-            else:
-                print('INVALID MOVEMENT CODE')
+            time.sleep(.7)
+            fc.stop()
+
+            self.traveled += 15.24
+            self.orientation = self.next_reference[self.orientation][movement]
+        
         else:
-            print('Ran out of fuel')
+            print('INVALID MOVEMENT CODE')
 
         return self.orientation, self.traveled
     
