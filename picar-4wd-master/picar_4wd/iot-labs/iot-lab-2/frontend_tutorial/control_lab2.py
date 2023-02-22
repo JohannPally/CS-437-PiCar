@@ -62,5 +62,5 @@ class Control2:
         else:
             print('Ran out of fuel')
 
-        return self.orientation, self.fuel
+        return self.orientation, self.traveled
     
