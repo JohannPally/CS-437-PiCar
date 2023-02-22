@@ -22,7 +22,7 @@ function client(input){
         console.log(receivedData)
         let [orientation, distanceTravelled] = receivedData.split(",") 
         document.getElementById("direction").innerHTML = orientation
-        document.getElementById("distance").innerHTML = Number(distanceTravelled).toFixed(2)
+        document.getElementById("distance").innerHTML = Number(distanceTravelled).toFixed(2) + " cm"
         console.log(receivedData);
         client.end();
         client.destroy();
