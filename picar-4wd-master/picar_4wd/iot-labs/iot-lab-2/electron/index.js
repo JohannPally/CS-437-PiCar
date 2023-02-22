@@ -18,9 +18,12 @@ function client(input){
     
     // get the data from the server
     client.on('data', (data) => {
-        document.getElementById("bluetooth").innerHTML = data;
-        console
-        console.log(data.toString());
+        let receivedData = data.toString();
+        console.log(receivedData)
+        let [orientation, distanceTravelled] = receivedData.split(",") 
+        document.getElementById("direction").innerHTML = orientation
+        document.getElementById("distance").innerHTML = Number(distanceTravelled).toFixed(2)
+        console.log(receivedData);
         client.end();
         client.destroy();
     });

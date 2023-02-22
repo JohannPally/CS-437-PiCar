@@ -17,6 +17,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             if data != b"":
                 print(data)  
                 orientation, traveled = cntl.move(data)
+                print(traveled, "Distance travelled")
                 message= f"{orientation},{traveled}".encode('ascii')
                 client.sendall(message) # Echo back to client
     except Exception as e:
