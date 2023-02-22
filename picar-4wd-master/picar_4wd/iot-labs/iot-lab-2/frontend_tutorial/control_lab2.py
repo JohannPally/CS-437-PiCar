@@ -53,7 +53,7 @@ class Control2:
             time.sleep(.7)
             fc.stop()
 
-            self.traveled += 15.24
+            self.traveled += 17.78
             self.orientation = self.next_reference[self.orientation][movement]
         
         else:
