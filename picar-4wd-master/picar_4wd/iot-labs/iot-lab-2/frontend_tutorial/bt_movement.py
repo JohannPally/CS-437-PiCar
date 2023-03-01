@@ -2,9 +2,9 @@ from bluedot.btcomm import BluetoothServer
 from signal import pause
 from control_lab2 import Control2
 
-def received_handler(data):
+cntl = Control2()
 
-    cntl = Control2()
+def received_handler(data):
     try:
         if data != b"":
             print(data)  
