@@ -9,7 +9,7 @@ class Control2:
         fc.stop()
 
         self.orientation = 'N'
-        self.mcodes = {b'w': "F", b's': "B", b'a': "L", b'd': "R"}
+        self.mcodes = {b'w': "F", b's': "B", b'a': "L", b'd': "R", b't': "T"}
         self.btcodes = {"UP": b'w', "DOWN": b's', "LEFT": b'a', "RIGHT": b'd'}
         self.next_reference = {
             'N': {'L':'W', 'F':'N', 'R':'E', 'B':'N'},
@@ -63,5 +63,5 @@ class Control2:
         else:
             print('INVALID MOVEMENT CODE')
 
-        return self.orientation, self.traveled
-    
+        dist = (fc.get_distance_at(0) + fc.get_distance_at(0) + fc.get_distance_at(0))/3
+        return self.orientation, self.traveled, np.max(0, dist)

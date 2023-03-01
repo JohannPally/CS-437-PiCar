@@ -9,8 +9,8 @@ def received_handler(data):
         if data != b"":
             print(data)  
             code = cntl.translate_bt(data)
-            orientation, traveled = cntl.move(code)
-            message= f"{orientation},{traveled}".encode('ascii')
+            orientation, traveled, obstacle = cntl.move(code)
+            message= f"{orientation},{traveled},{obstacle}".encode('ascii')
             s.send(str(message)) # Echo back to client
 
     except: 
