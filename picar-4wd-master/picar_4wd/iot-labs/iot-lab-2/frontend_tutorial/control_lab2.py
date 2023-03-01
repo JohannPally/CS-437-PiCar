@@ -10,6 +10,7 @@ class Control2:
 
         self.orientation = 'N'
         self.mcodes = {b'w': "F", b's': "B", b'a': "L", b'd': "R"}
+        self.btcodes = {"UP": b'w', "DOWN": b's', "LEFT": b'a', "RIGHT": b'd'}
         self.next_reference = {
             'N': {'L':'W', 'F':'N', 'R':'E', 'B':'N'},
             'E': {'L':'N', 'F':'E', 'R':'S', 'B':'E'},
@@ -19,6 +20,9 @@ class Control2:
        
         self.traveled = 0
         return
+    
+    def translate_bt(self, bt_c):
+        return self.btcodes[bt_c]
         
     def move(self, code):
         movement = self.mcodes.get(code)
