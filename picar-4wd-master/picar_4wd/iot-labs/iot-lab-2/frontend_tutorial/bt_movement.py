@@ -6,13 +6,12 @@ def received_handler(data):
 
     cntl = Control2()
     try:
-        while 1:
-            if data != b"":
-                print(data)  
-                code = cntl.translate_bt(data)
-                orientation, traveled = cntl.move(code)
-                message= f"{orientation},{traveled}".encode('ascii')
-                # s.send(message) # Echo back to client
+        if data != b"":
+            print(data)  
+            code = cntl.translate_bt(data)
+            orientation, traveled = cntl.move(code)
+            message= f"{orientation},{traveled}".encode('ascii')
+            # s.send(message) # Echo back to client
 
     except: 
         print("Closing socket")
