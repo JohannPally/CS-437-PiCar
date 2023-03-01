@@ -11,7 +11,7 @@ def received_handler(data):
             code = cntl.translate_bt(data)
             orientation, traveled = cntl.move(code)
             message= f"{orientation},{traveled}".encode('ascii')
-            # s.send(message) # Echo back to client
+            s.send(message) # Echo back to client
 
     except: 
         print("Closing socket")
