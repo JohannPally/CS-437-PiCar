@@ -58,7 +58,7 @@ class Control2:
             fc.stop()
 
             self.traveled = self.traveled + 17.78
-            print(self.traveled)
+            print('dist', self.traveled)
             self.orientation = self.next_reference[self.orientation][movement]
         
         else:
