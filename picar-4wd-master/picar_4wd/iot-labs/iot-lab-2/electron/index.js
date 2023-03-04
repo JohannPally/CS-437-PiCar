@@ -20,9 +20,10 @@ function client(input){
     client.on('data', (data) => {
         let receivedData = data.toString();
         console.log(receivedData)
-        let [orientation, distanceTravelled] = receivedData.split(",") 
+        let [orientation, distanceTravelled, obstacle] = receivedData.split(",") 
         document.getElementById("direction").innerHTML = orientation
         document.getElementById("distance").innerHTML = Number(distanceTravelled).toFixed(2) + " cm"
+        document.getElementById("obstacle").innerHTML = Number(obstacle).toFixed(2) + "cm"
         console.log(receivedData);
         client.end();
         client.destroy();
